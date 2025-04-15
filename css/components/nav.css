@@ -1,0 +1,36 @@
+/* nav.css - Navigation Components */
+.nav-primary {
+    background-color: var(--primary-blue);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-blue);
+    padding: 1rem;
+    z-index: 1000;
+  }
+  
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+    
+    .nav-links.md\\:flex {
+      display: none;
+    }
+  }
