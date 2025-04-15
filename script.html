@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
+            background: #ffffff; /* Changed to pure white */
         }
         .submenu {
             display: none;
@@ -45,14 +45,48 @@
             height: 200px;
             width: 100%;
         }
+        
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: #add8e6; /* Light blue */
+                padding: 1rem;
+                z-index: 1000;
+            }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="bg-white shadow-lg">
+    <nav class="bg-[#add8e6] shadow-lg"> <!-- Changed to light blue -->
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <h1 class="text-2xl font-bold text-green-600">Agri-Intelligence</h1>
-                <div class="flex items-center space-x-4">
+                
+                <!-- Hamburger menu for mobile -->
+                <button class="hamburger md:hidden">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+                
+                <!-- Navigation links -->
+                <div class="nav-links md:flex items-center space-x-4">
                     <button class="settings-btn p-2 rounded-full hover:bg-gray-100">
                         <i class="bi bi-gear text-xl"></i>
                     </button>
@@ -65,6 +99,7 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Rest of your content remains exactly the same -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Smart Advisory -->
             <button class="main-button p-6 bg-white rounded-xl shadow-md hover:shadow-lg" data-section="smart-advisory">
@@ -123,6 +158,15 @@
     </main>
 
     <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Rest of your JavaScript remains exactly the same
         const sections = {
             'smart-advisory': {
                 title: 'Smart Advisory',
@@ -570,7 +614,7 @@
                                 <h3 class="font-semibold text-lg mb-2">Eligible Loan Products</h3>
                                 <div class="space-y-4 mt-4">
                                     <div class="border border-green-200 p-3 rounded-lg bg-green-50">
-                                        <div class="flex justify-between items-center">
+                                        <div class="flex justify-between">
                                             <h4 class="font-medium">Kisan Credit Card</h4>
                                             <span class="text-xs bg-green-200 text-green-800 px-2 py-1 rounded-full">Recommended</span>
                                         </div>
@@ -594,7 +638,7 @@
                                     </div>
                                     
                                     <div class="border p-3 rounded-lg">
-                                        <div class="flex justify-between items-center">
+                                        <div class="flex justify-between">
                                             <h4 class="font-medium">FPO Member Loan</h4>
                                             <span class="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded-full">Special</span>
                                         </div>
@@ -618,7 +662,7 @@
                                     </div>
                                     
                                     <div class="border p-3 rounded-lg">
-                                        <div class="flex justify-between items-center">
+                                        <div class="flex justify-between">
                                             <h4 class="font-medium">Equipment Loan</h4>
                                         </div>
                                         <div class="mt-2 text-sm space-y-1">
@@ -1337,7 +1381,7 @@
                                         </div>
                                     </li>
                                 </ol>
-                                <div class="mt-4">
+                            <div class="mt-4">
                                     <button class="w-full bg-green-500 text-white rounded-lg py-3">
                                         Create Your Own FPO
                                     </button>
@@ -1619,3 +1663,4 @@
     </script>
 </body>
 </html>
+                 
