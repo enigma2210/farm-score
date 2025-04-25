@@ -270,6 +270,28 @@ export const detailViews = {
             </div>
         </div>
     `,
+    'Add/View Plot': `
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-2xl font-bold mb-4">📍 Add or View Your Plot</h2>
+          <p class="text-gray-600 mb-4">Please either visit your farm and allow GPS access or drop a pin on the map below.</p>
+
+          <div class="flex justify-center items-center h-[500px]">
+            <iframe 
+              src="/leaflet-map.html"
+              class="w-[90%] h-full rounded-xl border shadow-md"
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <div id="coords-display" class="text-sm text-gray-800 mb-4">
+               📌 No location selected
+          </div>
+
+          <button id="save-plot-btn" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
+           Save This Plot
+          </button>
+        </div>
+    `,
     'Get Loan': `
         <div class="bg-white p-6 rounded-xl shadow-md">
             <div class="flex items-center justify-between mb-6">

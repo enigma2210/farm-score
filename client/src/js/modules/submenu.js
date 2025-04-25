@@ -1,6 +1,7 @@
 // submenu.js - Handles all submenu and detail view interactions
 import { sections } from './sections.js';
 import { detailViews } from './detail-views.js';
+import { initLocationPicker } from './location-picker.js';
 
 export function setupSubmenus() {
     const submenuContainer = document.getElementById('submenu-container');
@@ -54,6 +55,27 @@ export function setupSubmenus() {
     function renderDetailView(detailName) {
         detailContainer.innerHTML = detailViews[detailName] || createFallbackView(detailName);
         detailContainer.classList.add('active');
+
+        if (detailName === 'Add/View Plot') {
+            setTimeout(() => {
+                const coordsDisplay = document.getElementById('coords-display');
+                const mapContainer = document.getElementById('map');
+
+                console.log('Map Container:', mapContainer);
+                
+                if (!coordsDisplay || !mapContainer) return;
+    
+                initLocationPicker('map', (lat, lng) => {
+                    coordsDisplay.innerText = `📍 Latitude: ${lat.toFixed(6)}, Longitude: ${lng.toFixed(6)}`;
+                });
+
+                setTimeout(() => {
+                if (window.map && typeof window.map.invalidateSize === 'function') {
+                    window.map.invalidateSize();
+                }
+            }, 500);
+            }, 300);
+        }
     }
 
     // Fallback for missing detail views
